@@ -1,0 +1,114 @@
+<!doctype html>
+<tbody id="listKeranjang"></tbody>
+</table>
+</div>
+
+
+<div class="d-flex justify-content-between align-items-center">
+<div>
+<small class="text-muted">Total items: <span id="totalItems">0</span></small>
+</div>
+<div class="text-end">
+<h4 class="mb-0">Rp <span id="totalHarga">0</span></h4>
+</div>
+</div>
+
+
+<hr>
+
+
+<div class="row g-2 align-items-center">
+<div class="col-md-4">
+<select id="metodeBayar" class="form-select">
+<option value="cash">Cash</option>
+<option value="transfer">Transfer (upload bukti)</option>
+<option value="kredit">Kredit (cicilan)</option>
+</select>
+</div>
+<div class="col-md-4">
+<input id="uang" type="number" class="form-control" placeholder="Uang diterima (untuk Cash)">
+</div>
+<div class="col-md-4">
+<div class="d-grid">
+<button class="btn btn-success" onclick="checkout()">Bayar & Simpan</button>
+</div>
+</div>
+</div>
+
+
+<div class="mt-2" id="transferUpload" style="display:none;">
+<label class="form-label">Upload Bukti Transfer</label>
+<input type="file" id="buktiTransfer" class="form-control">
+</div>
+
+
+</div>
+
+
+<!-- STRUK CARD -->
+<div class="card p-3 mt-3 d-none" id="strukCard">
+<h5>Struk</h5>
+<div id="strukContent"></div>
+<div class="mt-2 d-flex gap-2">
+<button class="btn btn-secondary btn-sm" onclick="printStruk()">Cetak</button>
+<button class="btn btn-outline-primary btn-sm" onclick="exportCSV()">Export CSV</button>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="col-lg-5">
+<!-- PRODUK MANAGEMENT -->
+<div class="card p-3 mb-3">
+<h5>Manajemen Produk</h5>
+<div class="mb-2 row g-2">
+<div class="col-md-6">
+<input id="prodNama" class="form-control" placeholder="Nama Produk">
+</div>
+<div class="col-md-3">
+<input id="prodHarga" type="number" class="form-control" placeholder="Harga">
+</div>
+<div class="col-md-3">
+<input id="prodStok" type="number" class="form-control" placeholder="Stok">
+</div>
+</div>
+<div class="d-flex gap-2">
+<button class="btn btn-primary" onclick="tambahProduk()">Tambah Produk</button>
+<button class="btn btn-outline-secondary" onclick="resetProductForm()">Reset</button>
+</div>
+<hr>
+<div style="max-height:220px; overflow:auto;">
+<table class="table table-sm">
+<thead><tr><th>Nama</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr></thead>
+<tbody id="produkTable"></tbody>
+</table>
+</div>
+</div>
+
+
+<!-- LAPORAN -->
+<div class="card p-3">
+<h5>Laporan Penjualan</h5>
+<canvas id="chartSales" height="150"></canvas>
+<small class="text-muted">Total Pendapatan: Rp <span id="totalPendapatan">0</span></small>
+<div class="mt-2">
+<button class="btn btn-sm btn-outline-success" onclick="syncToSheets()">Sync Produk ke Sheets</button>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
